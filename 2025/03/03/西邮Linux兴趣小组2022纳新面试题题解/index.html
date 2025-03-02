@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-西邮Linux兴趣小组2022纳新面试题题解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/03/03/%E8%A5%BF%E9%82%AELinux%E5%85%B4%E8%B6%A3%E5%B0%8F%E7%BB%842022%E7%BA%B3%E6%96%B0%E9%9D%A2%E8%AF%95%E9%A2%98%E9%A2%98%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2025-03-02T16:27:08.376Z" itemprop="datePublished">2025-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="西邮Linux兴趣小组2022纳新面试题题解"><a href="#西邮Linux兴趣小组2022纳新面试题题解" class="headerlink" title="西邮Linux兴趣小组2022纳新面试题题解"></a>西邮Linux兴趣小组2022纳新面试题题解</h1><blockquote>
+<p>学长寄语：长期以来，西邮linux兴趣小组的面试题以难度之高名扬西邮校内。我们作为出题人也清楚的知道这份试题略有难度。请你动手敲一敲代码。别担心，若有同学能完成一半的题目，就已经十分优秀。其次，相比于题目的答案，我们对你的思路和过程更感兴趣，或许你的答案略有瑕疵，但你正确的思路和对知识的理解足以为你赢得绝大多数的分数。最后，做题的过程也是学习和成长的过程，相信本试题对你更加熟悉地掌握C语言一定有所帮助。祝你好运。我们东区逸夫楼FZ103见！</p>
+</blockquote>
+<ul>
+<li>本题目只作为西邮Linux兴趣小组2022纳新面试的有限参考。</li>
+<li>为节省版面，本试题的程序源码省去了#include指令。</li>
+<li>本试题中的程序源码仅用于考察C语言基础，不应当作为C语言「代码风格」的范例。</li>
+<li>题目难度随机排列。</li>
+<li>所有题目编译并运行于x86_64 GNU&#x2F;Linux环境。</li>
+</ul>
+<h1 id="0-我的计算器坏了？！"><a href="#0-我的计算器坏了？！" class="headerlink" title="0. 我的计算器坏了？！"></a>0. 我的计算器坏了？！</h1><blockquote>
+<p>2^10 &#x3D; 1024 对应于十进制的4位，那么 2^10000 对应于十进制的多少位呢?</p>
+</blockquote>
+<p>  <strong>2^10 &#x3D; 1024,就是lg 2^n &#x3D; n * lg 2所以公式为<code>[nlg2] + 1</code>，n &#x3D; 10000，大概为3011；</strong></p>
+<h1 id="1-printf还能这么玩？"><a href="#1-printf还能这么玩？" class="headerlink" title="1. printf还能这么玩？"></a>1. printf还能这么玩？</h1><p>   尝试着解释程序的输出。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> ((<span class="number">3</span> + <span class="number">2</span> &lt; <span class="number">2</span>) &gt; (<span class="number">3</span> + <span class="number">2</span> &gt; <span class="number">2</span>))</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Welcome to Xiyou Linux Group\n&quot;</span>);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">printf</span>(<span class="string">&quot;Xiyou Linux Group - 2%d&quot;</span>, <span class="built_in">printf</span>(<span class="string">&quot;&quot;</span>)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3 + 2 &#x3D; 5 &lt; 2为假，所以是0, 5 &gt; 2为真，所以是1,0 &lt; 1,所以执行else<br>此处为printf函数嵌套,用到了printf的返回值，printf返回值为打印元素的个数.由于最里面没有东西，所以返回值是0，最外面的那个看的是里面printf的字符个数，一共有22个字符，所以最后会打印2022。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Xiyou Linux Group - 2022</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-你好你好你好呀！"><a href="#2-你好你好你好呀！" class="headerlink" title="2. 你好你好你好呀！"></a>2. 你好你好你好呀！</h1><ul>
+<li>程序的输出有点奇怪，请尝试解释一下程序的输出吧。</li>
+<li>请谈谈对<code>sizeof()</code>及<code>strlen()</code>的理解吧。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="type">char</span> p0[] = <span class="string">&quot;Hello,Linux&quot;</span>;</span><br><span class="line">    <span class="type">char</span> *p1 = <span class="string">&quot;Hello,Linux&quot;</span>;</span><br><span class="line">    <span class="type">char</span> p2[<span class="number">11</span>] = <span class="string">&quot;Hello,Linux&quot;</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;p0 == p1: %d, strcmp(p0, p2): %d\n&quot;</span>, p0 == p1, <span class="built_in">strcmp</span>(p0, p2));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;sizeof(p0): %zu, sizeof(p1): %zu, sizeof(*p2): %zu\n&quot;</span>,</span><br><span class="line">           <span class="keyword">sizeof</span>(p0), <span class="keyword">sizeof</span>(p1), <span class="keyword">sizeof</span>(*p2));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;strlen(p0): %zu, strlen(p1): %zu\n&quot;</span>, <span class="built_in">strlen</span>(p0), <span class="built_in">strlen</span>(p1));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p0 == p1: 0, strcmp(p0, p2): -1</span><br><span class="line">sizeof(p0): 12, sizeof(p1): 8, sizeof(*p2): 1</span><br><span class="line">strlen(p0): 11, strlen(p1): 11</span><br></pre></td></tr></table></figure>
+
+<p>*<strong>这里的p0是一个数组，所以此处p0代表的是首地址，p1也是地址，所以此处地址是不一样的，输出0.后面用strcmp函数，比较，两者一样，但p2的结尾没有以\0结束，所以p2大于p0，结果为0；<br>sizeof(p0)，是数组，大小为元素数，即12；p1为指针，所以大小为8；<em>p2在这里表示首地址指向的字符‘H’，所以为1；.strlen是计算字符串长度的，遇到\0结束，&#x3D;&#x3D;返回不包括\0&#x3D;&#x3D;，所以p0为11,p1也为11.</em></strong></p>
+<h2 id="3-换个变量名不行吗？"><a href="#3-换个变量名不行吗？" class="headerlink" title="3. 换个变量名不行吗？"></a>3. 换个变量名不行吗？</h2><p>请结合本题，分别谈谈你对C语言中「全局变量」和「局部变量」的「生命周期」理解。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line">    a += <span class="number">1</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a = a + <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;a = %d\n&quot;</span>, a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;a = %d\n&quot;</span>, a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    test();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;a= %d\n&quot;</span>, a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = 32768</span><br><span class="line">a = 2</span><br><span class="line">a = 3</span><br></pre></td></tr></table></figure>
+<p><strong>因为在 int a &#x3D; a + 1在作用域中， a 是未初始化的，&#x3D;&#x3D;可能会导致随机值被打印&#x3D;&#x3D;，出了作用域，a被销毁（生命结束）；a +&#x3D; 1,a &#x3D; 2,函数外面打印2,main函数里没有定义a,所以用全局变量，即为3；</strong></p>
+<h1 id="4-内存对不齐"><a href="#4-内存对不齐" class="headerlink" title="4. 内存对不齐"></a>4. 内存对不齐</h1><p><code>union</code>与<code>struct</code>各有什么特点呢，你了解他们的内存分配模式吗。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">    <span class="type">long</span> l;</span><br><span class="line">    <span class="type">int</span> i[<span class="number">5</span>];</span><br><span class="line">    <span class="type">char</span> c;</span><br><span class="line">&#125; UNION;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> like;<span class="comment">//4字节</span></span><br><span class="line">    UNION coin;<span class="comment">//24字节，但要从8的倍数开始对齐，即第八个开始。</span></span><br><span class="line">    <span class="type">double</span> collect;<span class="comment">//8字节，刚好从32开始对齐。</span></span><br><span class="line">&#125; STRUCT;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;sizeof (UNION) = %zu\n&quot;</span>, <span class="keyword">sizeof</span>(UNION)); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;sizeof (STRUCT) = %zu\n&quot;</span>, <span class="keyword">sizeof</span>(STRUCT));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sizeof (UNION) = 24</span><br><span class="line">sizeof (STRUCT) = 40</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><strong>union 共用一段内存空间，内存大小就是最大成员的大小，但必须按照最大对齐数的整数倍来安排内存。long在这里为8,i为20,c 为1,最大为20,但要为8的倍数，所以是24；</strong></li>
+<li><strong>结构体大小为所有成员之和，且要有对齐数，所以为40;</strong></li>
+</ul>
+</blockquote>
+<h1 id="5-Bitwise"><a href="#5-Bitwise" class="headerlink" title="5. Bitwise"></a>5. Bitwise</h1><ul>
+<li>请使用纸笔推导出程序的输出结果。</li>
+<li>请谈谈你对位运算的理解。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> a = <span class="number">4</span> | <span class="number">7</span>;<span class="comment">//0100和0111 -&gt; 0111</span></span><br><span class="line">    a &lt;&lt;= <span class="number">3</span>;<span class="comment">//0111000 -&gt; 56</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> b = <span class="number">5</span> &amp; <span class="number">7</span>;<span class="comment">//0101和0111 -&gt; 0101</span></span><br><span class="line">    b &gt;&gt;= <span class="number">3</span>;<span class="comment">//0000000 -&gt; 0</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> c = <span class="number">6</span> ^ <span class="number">7</span>;<span class="comment">//0110和0111 -&gt; 0001</span></span><br><span class="line">    c = ~c;<span class="comment">//00000001 -&gt; 11111110 -&gt; -2 -&gt; 254</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">short</span> d = (a ^ c) &lt;&lt; <span class="number">3</span>;<span class="comment">//11000110000 -&gt; 1584 -&gt; (char)48</span></span><br><span class="line">    <span class="type">signed</span> <span class="type">char</span> e = <span class="number">-63</span>;<span class="comment">//11000001</span></span><br><span class="line">    e &lt;&lt;= <span class="number">2</span>;<span class="comment">//1100000100 -&gt; 772 -&gt; 4 -&gt; 0x4</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;a: %d, b: %d, c: %d, d: %d\n&quot;</span>, a, b, c, (<span class="type">char</span>)d);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;e: %#x\n&quot;</span>, e);<span class="comment">//%#x是一个格式说明符，用于printf函数来输出整数值的十六进制,并确保输出的十六进制数前面带有0x前缀。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a: 56, b: 0, c: 254, d: 48</span><br><span class="line">e: 0x4</span><br></pre></td></tr></table></figure>
+<h1 id="6-英译汉"><a href="#6-英译汉" class="headerlink" title="6. 英译汉"></a>6. 英译汉</h1><p>请说说下面数据类型的含义，谈谈<code>const</code>的作用。</p>
+<ol>
+<li><code>char *const p</code>。</li>
+<li><code>char const *p</code>。</li>
+<li><code>const char *p</code>。</li>
+</ol>
+<p> 1为指针常量，它的地址无法更改，但值可以更改。<br> 2,3为常量指针，指针可更改，但值不可更改。</p>
+<blockquote>
+<p>const的作用：<br>1.修饰局部变量<br>2.常量指针与指针常量<br>3.修饰函数的参数<br>4.修饰函数的返回值<br>5.修饰全局变量</p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/xingjiarong/article/details/47282255">const详解</a></p>
+</blockquote>
+<h1 id="7-汉译英"><a href="#7-汉译英" class="headerlink" title="7. 汉译英"></a>7. 汉译英</h1><p>请用变量<code>p</code>给出下面的定义:</p>
+<ol>
+<li>含有10个指向<code>int</code>的指针的数组。</li>
+<li>指向含有10个<code>int</code>数组的指针。</li>
+<li>含有3个「指向函数的指针」的数组，被指向的函数有1个<code>int</code>参数并返回<code>int</code>。</li>
+</ol>
+<p><code>int* arr[10];</code><br><code>int (*a)[10];</code><br><code>int (*p[3])(int);</code><br><strong>下来给个代码例子</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 被指向的函数</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">multiply</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a * b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">subtract</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a - b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 创建一个指向函数的指针数组// 定义函数类型</span></span><br><span class="line">    <span class="type">int</span> (*a[<span class="number">3</span>])(<span class="type">int</span>, <span class="type">int</span>) = &#123; add, multiply, subtract &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="8-混乱中建立秩序"><a href="#8-混乱中建立秩序" class="headerlink" title="8. 混乱中建立秩序"></a>8. 混乱中建立秩序</h1><p>你对排序算法了解多少呢?<br>请谈谈你所了解的排序算法的思想、稳定性、时间复杂度、空间复杂度。</p>
+<p>提示：动动你的小手敲出来更好哦~</p>
+<blockquote>
+<p>冒泡<br>稳定性<br>冒泡排序是稳定的排序算法。因为相等的元素不会交换位置。<br>时间复杂度:<br>最优时间复杂度：O(n)（当数列已经有序时）<br>最坏时间复杂度：O(n^2)<br>平均时间复杂度：O(n^2)<br>空间复杂度:冒泡排序是原地排序算法，空间复杂度为 O(1)。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">bubblesort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; len - i - <span class="number">1</span>; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                swap(arr[j], arr[j + <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>选择<br>稳定性:选择排序是不稳定的排序算法。因为相同元素在排序过程中可能会改变相对位置。<br>时间复杂度:平均时间复杂度：O(n^2)<br>空间复杂度:选择排序是原地排序算法，空间复杂度为 O(1)。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">quicksort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; len; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[i] &gt; arr[j])</span><br><span class="line">            &#123;</span><br><span class="line">                swap(arr[i], arr[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>快速<br>稳定性：不稳定的排序算法。因为相同元素在排序过程中可能会改变相对位置。<br>时间复杂度<br>最优时间复杂度：O(n log n)<br>最坏时间复杂度：O(n^2)（当选择的基准元素是最大或最小值时）<br>平均时间复杂度：O(n log n)<br>空间复杂度<br>最优空间复杂度：O(log n)（递归调用栈）<br>最坏空间复杂度：O(n)（当每次划分极不平衡时)<br>平均空间复杂度：O(log n)</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">quicksort</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> left, <span class="type">int</span> right)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (left &gt; right)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="type">int</span> i = left, j = right;</span><br><span class="line">    <span class="type">int</span> temp = arr[i];</span><br><span class="line">    <span class="keyword">while</span> (i != j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j &amp;&amp; arr[j] &gt;= temp)</span><br><span class="line">        &#123;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j &amp;&amp; arr[i] &lt;= temp)</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j)</span><br><span class="line">        &#123;</span><br><span class="line">            swap(arr[i], arr[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    swap(arr[left], arr[i]);</span><br><span class="line">    quicksort(arr, left, i - <span class="number">1</span>);</span><br><span class="line">    quicksort(arr, i + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="9-手脑并用"><a href="#9-手脑并用" class="headerlink" title="9. 手脑并用"></a>9. 手脑并用</h1><p>请实现ConvertAndMerge函数：<br>拼接输入的两个字符串，并翻转拼接后得到的新字符串中所有字母的大小写。</p>
+<p>提示:你需要为新字符串分配空间。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span>* <span class="title function_">convertAndMerge</span><span class="params">(<span class="comment">/*补全签名*/</span>)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="type">char</span> words[<span class="number">2</span>][<span class="number">20</span>] = &#123;<span class="string">&quot;Welcome to Xiyou &quot;</span>, <span class="string">&quot;Linux Group 2022&quot;</span>&#125;;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, words[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, words[<span class="number">1</span>]);</span><br><span class="line">    <span class="type">char</span> *str = convertAndMerge(words);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;str = %s\n&quot;</span>, str);</span><br><span class="line">    <span class="built_in">free</span>(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码如下：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span>* <span class="title function_">convertAndMerge</span><span class="params">(<span class="type">char</span> words[<span class="number">2</span>][<span class="number">20</span>])</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> len;</span><br><span class="line">    len = <span class="built_in">strlen</span>(words[<span class="number">0</span>]) + <span class="built_in">strlen</span>(words[<span class="number">1</span>]);</span><br><span class="line">    <span class="type">char</span>* arr = (<span class="type">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">char</span>) * (len + <span class="number">1</span>));</span><br><span class="line">    <span class="built_in">strcpy</span>(arr,words[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">strcat</span>(arr,words[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">islower</span>(arr[i]))</span><br><span class="line">        &#123;</span><br><span class="line">            arr[i] -= <span class="number">32</span>;<span class="comment">//arr[i] = toupper(arr[i]);</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">isupper</span>(arr[i]))</span><br><span class="line">        &#123;</span><br><span class="line">            arr[i] += <span class="number">32</span>;<span class="comment">//arr[i] = tolower(arr[i]);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="10-给你我的指针，访问我的心声"><a href="#10-给你我的指针，访问我的心声" class="headerlink" title="10. 给你我的指针，访问我的心声"></a>10. 给你我的指针，访问我的心声</h1><p>程序的输出有点奇怪，请尝试解释一下程序的输出吧。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span> &#123;</span><br><span class="line">    <span class="type">int</span> arr[<span class="number">5</span>][<span class="number">5</span>];</span><br><span class="line">    <span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="type">int</span> *temp = *(arr + i);</span><br><span class="line">        <span class="keyword">for</span> (; temp &lt; arr[<span class="number">5</span>]; temp++) *temp = a++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j++) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\t&quot;</span>, arr[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里是地址没有变，而是将a的值放在这块地址，而这块地址代表的就是二维数组的值。这里arr的首地址为<code>0x7fffffffdac0</code>,而arr[5]的地址为<code>0x7fffffffdb24</code>中间差值正好为100,即25个int类型的数字，*temp &#x3D; a &#x3D; 0，一直加到4,但for循环继续执行，后面会加25 - 5 &#x3D; 20 次，a就加到了25,下次地址就是25 — 29，这次地址差了15,继续到45,然后加10.加5,所以一直到75,但二维数组的值就为：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0       1       2       3       4       25      26      27      28      29      45      46      47      48      49      60      61    62       63      64      70      71      72      73      74</span><br></pre></td></tr></table></figure>
+
+<h1 id="11-奇怪的参数"><a href="#11-奇怪的参数" class="headerlink" title="11. 奇怪的参数"></a>11. 奇怪的参数</h1><p>你了解argc和argv吗？<br>直接运行程序argc的值为什么是1？<br>程序会出现死循环吗？</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span> &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;argc = %d\n&quot;</span>, argc);</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        argc++;</span><br><span class="line">        <span class="keyword">if</span> (argc &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, (<span class="type">char</span> *)argv[<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>&#x3D;&#x3D;argv[]是命令行参数,argc是从命令行传给程序的参数个数(至少为1)&#x3D;&#x3D; 在没有传入参数时 argc &#x3D; 1;<br>argc会一直增加直到溢出为负数，此时输出结果为程序的路径名。</strong></p>
+<h1 id="12-奇怪的字符"><a href="#12-奇怪的字符" class="headerlink" title="12. 奇怪的字符"></a>12. 奇怪的字符</h1><p>程序的输出有点奇怪，请尝试解释一下程序的输出吧。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span> &#123;</span><br><span class="line">    <span class="type">int</span> data1[<span class="number">2</span>][<span class="number">3</span>] = &#123;&#123;<span class="number">0x636c6557</span>, <span class="number">0x20656d6f</span>, <span class="number">0x58206f74</span>&#125;,</span><br><span class="line">                       &#123;<span class="number">0x756f7969</span>, <span class="number">0x6e694c20</span>, <span class="number">0x00000000</span>&#125;&#125;;</span><br><span class="line">    <span class="type">int</span> data2[] = &#123;<span class="number">0x47207875</span>, <span class="number">0x70756f72</span>, <span class="number">0x32303220</span>, <span class="number">0x00000a32</span>&#125;;</span><br><span class="line">    <span class="type">char</span> *a = (<span class="type">char</span> *)data1;</span><br><span class="line">    <span class="type">char</span> *b = (<span class="type">char</span> *)data2;</span><br><span class="line">    <span class="type">char</span> buf[<span class="number">1024</span>];</span><br><span class="line">    <span class="built_in">strcpy</span>(buf, a);<span class="comment">//把a放进buf</span></span><br><span class="line">    <span class="built_in">strcat</span>(buf, b);<span class="comment">//把b和a连接起来</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s \n&quot;</span>, buf);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>个人基本为小端序，<code>char *a = (char *)data1</code>将这里转化为一个字节，即两个数字，*a获取data1的首地址并一个一个转化为字符形式，0x<code>63</code> <code>6c</code> <code>65</code> <code>57</code> -&gt; <code>57</code> <code>65</code> <code>6c</code> <code>63</code> -&gt; <code>W e l c</code>,最后形成字符串。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Welcome to Xiyou Linux Group 2022 </span><br></pre></td></tr></table></figure>
+
+<h1 id="13-小试宏刀"><a href="#13-小试宏刀" class="headerlink" title="13. 小试宏刀"></a>13. 小试宏刀</h1><ul>
+<li>请谈谈你对<code>#define</code>的理解。</li>
+<li>请尝试着解释程序的输出。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> SWAP(a, b, t) t = a; a = b; b = t</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SQUARE(a) a *a</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SWAPWHEN(a, b, t, cond) <span class="keyword">if</span> (cond) SWAP(a, b, t)</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> tmp;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> y = <span class="number">2</span>;</span><br><span class="line">    <span class="type">int</span> z = <span class="number">3</span>;</span><br><span class="line">    <span class="type">int</span> w = <span class="number">3</span>;</span><br><span class="line">    SWAP(x, y, tmp);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;x = %d, y = %d, tmp = %d\n&quot;</span>, x, y, tmp);</span><br><span class="line">    <span class="keyword">if</span> (x &gt; y) SWAP(x, y, tmp);<span class="comment">//2 &gt; 1 成立</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;x = %d, y = %d, tmp = %d\n&quot;</span>, x, y, tmp);</span><br><span class="line">    SWAPWHEN(x, y, tmp, SQUARE(<span class="number">1</span> + <span class="number">2</span> + z++ + ++w) == <span class="number">100</span>);<span class="comment">//1 + 2 + 3 + 4 * 1 + 2 + 4 + 5 = 21;所以为，x,y,tmp,0;</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;x = %d, y = %d\n&quot;</span>, x, y, tmp);<span class="comment">//x = y =2;</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;z = %d, w = %d, tmp = %d\n&quot;</span>, z, w, tmp);<span class="comment">//z = 4 后z++,z = 5;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="number">0</span>) t = a;<span class="comment">//不执行此项</span></span><br><span class="line">a = b;<span class="comment">//x = y = 2;</span></span><br><span class="line">b = t;<span class="comment">//y = tmp = 2;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = 2, y = 1, tmp = 1</span><br><span class="line">x = 1, y = 2, tmp = 2</span><br><span class="line">x = 2, y = 2</span><br><span class="line">z = 5, w = 5, tmp = 2</span><br></pre></td></tr></table></figure>
+
+<h1 id="14-GNU-Linux命令-选做"><a href="#14-GNU-Linux命令-选做" class="headerlink" title="14. GNU&#x2F;Linux命令 (选做)"></a>14. GNU&#x2F;Linux命令 (选做)</h1><p>你知道以下命令的含义和用法吗：</p>
+<p>注：<br>嘿！你或许对Linux命令不是很熟悉，甚至你没听说过Linux。<br>但别担心，这是选做题，不会对你的面试产生很大的影响！<br>了解Linux是加分项，但不了解也不扣分哦！</p>
+<ul>
+<li><code>ls</code></li>
+<li><code>rm</code></li>
+<li><code>whoami</code></li>
+</ul>
+<p>请问你还了解哪些GNU&#x2F;Linux的命令呢。</p>
+<blockquote>
+<p>恭喜你做到这里！你的坚持战胜了绝大多数看到这份试题的同学。<br>或许你自己对答题的表现不满意,但别担心，请自信一点呐。<br>坚持到达这里已经证明了你的优秀。  </p>
+</blockquote>
+<p>-<code> ls</code> 是一个用于列出目录内容的命令。常见用法包括：</p>
+<blockquote>
+<p><code>ls</code>：列出当前目录的文件和子目录。<br><code> ls -l</code>：以长格式显示文件和目录的详细信息，包括权限、拥有者、文件大小和修改时间。<br><code>ls -a</code>：显示所有文件，包括以.开头的隐藏文件。</p>
+</blockquote>
+<ul>
+<li><p><code>rm</code> 是一个用于删除文件和目录的命令。</p>
+<blockquote>
+<p><code>-f</code>：强制删除，忽略不存在的文件，不提示确认。<br><code>-i</code>：交互模式，在删除每个文件之前提示确认。<br><code>-r</code> ：递归删除，用于删除目录及其内容。<br><code>-v</code>：显示详细输出，列出正在删除的文件。</p>
+</blockquote>
+</li>
+<li><p><code>whoami</code> 用于显示当前用户的用户名。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/03/03/%E8%A5%BF%E9%82%AELinux%E5%85%B4%E8%B6%A3%E5%B0%8F%E7%BB%842022%E7%BA%B3%E6%96%B0%E9%9D%A2%E8%AF%95%E9%A2%98%E9%A2%98%E8%A7%A3/" data-id="cm7ruogjc0000e2p5dr9p0dp5" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/03/03/%E8%A5%BF%E9%82%AELinux%E5%85%B4%E8%B6%A3%E5%B0%8F%E7%BB%842023%E7%BA%B3%E6%96%B0%E9%9D%A2%E8%AF%95%E9%A2%98%E9%A2%98%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/03/03/%E8%A5%BF%E9%82%AELinux%E5%85%B4%E8%B6%A3%E5%B0%8F%E7%BB%842024%E7%BA%B3%E6%96%B0%E9%9D%A2%E8%AF%95%E9%A2%98%E9%A2%98%E8%A7%A3/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/03/%E8%A5%BF%E9%82%AELinux%E5%85%B4%E8%B6%A3%E5%B0%8F%E7%BB%842023%E7%BA%B3%E6%96%B0%E9%9D%A2%E8%AF%95%E9%A2%98%E9%A2%98%E8%A7%A3/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/03/%E8%A5%BF%E9%82%AELinux%E5%85%B4%E8%B6%A3%E5%B0%8F%E7%BB%842022%E7%BA%B3%E6%96%B0%E9%9D%A2%E8%AF%95%E9%A2%98%E9%A2%98%E8%A7%A3/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2025 By Autoload<br>
+      Driven - <a href="https://hexo.io/" target="_blank">Hexo</a>|Theme - <a href="https://github.com/autoload/hexo-theme-auto" target="_blank">Auto</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
