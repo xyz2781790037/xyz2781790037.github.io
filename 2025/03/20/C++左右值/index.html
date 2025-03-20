@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>c++左右值-zeal</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/logo.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="C++,">
+<meta name="description" content="闲居清风亭，左右清风来。">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/thumb1.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>zeal</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('https://api.ixiaowai.cn/gqapi/gqapi.php')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/C++">C++</a></li>
+            
+            
+        </ul>
+        
+        <h1>c++左右值</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a href="../../about">zeal</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                </div>
+                <p>2025-03-20 09:37:01</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="C-中的左值和右值"><a href="#C-中的左值和右值" class="headerlink" title="C++中的左值和右值"></a>C++中的左值和右值</h1><h2 id="一、左值和右值的概念"><a href="#一、左值和右值的概念" class="headerlink" title="一、左值和右值的概念"></a>一、左值和右值的概念</h2><h4 id="左值"><a href="#左值" class="headerlink" title="左值"></a>左值</h4><p>左值是一个表示数据的表达式，它代表一个具名的内存位置，程序可以获取其地址，可以通过地址访问它们，是可被引用的数据对象。左值又可分为可修改的的左值和不可修改的左值。</p>
+<ul>
+<li>可修改的的左值<br>左值其实就是指可出现在赋值语句左边的表达式，它们的值是可以被修改的(<strong>最初的概念</strong>);</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs C++"><span class="hljs-type">int</span> a;<br>a = <span class="hljs-number">10</span>;<br> <br><span class="hljs-type">int</span>* ptr = &amp;a;<br>*ptr = <span class="hljs-number">100</span>;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>不可修改的左值<br>随着关键字const的引入，这个左值的概念发生了变化 。因为虽然不能对const变量赋值，但是可以获取其地址。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-type">const</span> <span class="hljs-type">int</span> a = <span class="hljs-number">10</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span>* ptrA = &amp;a; <span class="hljs-comment">//可以通过地址访问它</span><br>a = <span class="hljs-number">100</span>;              <span class="hljs-comment">//错误</span><br></code></pre></td></tr></table></figure>
+<h4 id="右值"><a href="#右值" class="headerlink" title="右值"></a>右值</h4><p>右值代表一个临时的值，不能被取地址，不能被修改，是不能出现在赋值语句的左边的。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs C++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br> <br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test01</span><span class="hljs-params">()</span> </span>&#123;<br> <br>	<span class="hljs-type">int</span> a = <span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> b = <span class="hljs-number">2</span>;<br>	<span class="hljs-type">int</span> c = a + b;<br>    <br>	<span class="hljs-type">int</span> d = <span class="hljs-built_in">func</span>();<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>面的a,b,c,d这几个变量都是左值，但是a+b和func()都是右值。 我们知道是无法写成如下这样的：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">a</span> + b = <span class="hljs-number">3</span>;<br><span class="hljs-attribute">func</span>() = <span class="hljs-number">3</span>;<br></code></pre></td></tr></table></figure>
+<h2 id="二-左值引用和右值引用"><a href="#二-左值引用和右值引用" class="headerlink" title="二. 左值引用和右值引用"></a>二. 左值引用和右值引用</h2><h4 id="1-左值引用-Lvalue-Reference"><a href="#1-左值引用-Lvalue-Reference" class="headerlink" title="1. 左值引用 (Lvalue Reference)"></a>1. 左值引用 (Lvalue Reference)</h4><p>左值引用是指引用一个左值（即具有持久性和可修改性的对象）。左值是指那些有地址的对象，比如变量名、数组元素等。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> a = <span class="hljs-number">5</span>;<br><span class="hljs-type">int</span> &amp;ref = a;  <span class="hljs-comment">// ref 是 a 的左值引用</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>左值引用可以绑定到一个左值。</li>
+<li>左值引用通常用于传递可修改的对象（传递引用可以避免复制，提高效率）。</li>
+</ul>
+<h4 id="2-右值引用-Rvalue-Reference"><a href="#2-右值引用-Rvalue-Reference" class="headerlink" title="2. 右值引用 (Rvalue Reference)"></a>2. 右值引用 (Rvalue Reference)</h4><p>右值引用是指引用一个右值（即临时对象或将要销毁的对象）。右值是没有持久性的对象，比如临时变量、字面量、函数返回值等。右值引用的作用就是允许一个对象的资源“转移”到另一个对象，而不是复制它。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span> &amp;&amp;rref = <span class="hljs-number">10</span>;  <span class="hljs-comment">// rref 是 10 的右值引用</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>右值引用可以绑定到一个右值。</li>
+<li>右值引用通常用于实现移动语义和完美转发，这是 C++11 引入的一项非常重要的特性，目的是减少不必要的对象拷贝，从而提高程序的性能。</li>
+</ul>
+<h4 id="左值与右值的区别"><a href="#左值与右值的区别" class="headerlink" title="左值与右值的区别"></a>左值与右值的区别</h4><ul>
+<li>左值：具有持久性，能出现在赋值语句的左侧，通常是变量、数组元素、解引用等。</li>
+<li>右值：没有持久性，不能出现在赋值语句的左侧，通常是临时对象、字面量、返回值等。</li>
+</ul>
+<h2 id="移动语义"><a href="#移动语义" class="headerlink" title="移动语义"></a>移动语义</h2><p>移动语义就是可以将对象的资源所有权从一个对象转移到另一个对象，而不进行资源的复制的技术。<br>移动语义得以实现，这其中便离不开右值引用的支持。<br>让编译器知道什么时候需要的是拷贝，什么时候不需要，这就是右值引用发挥作用的地方了。简单来说，就是编译器会根据会根据传进来的参数是左值引用还是右值引用来决定调用拷贝构造函数还是移动构造函数(移动构造函数里将资源从一个对象转移到另一个对象，而不用复制)。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyClass</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    std::string data; <span class="hljs-comment">// 假设我们有一个简单的成员变量，存储字符串</span><br><br>    <span class="hljs-comment">// 默认构造函数</span><br>    <span class="hljs-built_in">MyClass</span>(<span class="hljs-type">const</span> std::string&amp; str) : <span class="hljs-built_in">data</span>(str) &#123;<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;MyClass constructor: &quot;</span> &lt;&lt; data &lt;&lt; std::endl;<br>    &#125;<br><br>    <span class="hljs-comment">// 移动构造函数</span><br>    <span class="hljs-built_in">MyClass</span>(MyClass&amp;&amp; other) <span class="hljs-keyword">noexcept</span> : <span class="hljs-built_in">data</span>(std::<span class="hljs-built_in">move</span>(other.data)) &#123;<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;MyClass move constructor\n&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 移动赋值操作符</span><br>    MyClass&amp; <span class="hljs-keyword">operator</span>=(MyClass&amp;&amp; other) <span class="hljs-keyword">noexcept</span> &#123;<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;MyClass move assignment operator\n&quot;</span>;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> != &amp;other) &#123;<br>            data = std::<span class="hljs-built_in">move</span>(other.data); <span class="hljs-comment">// 通过移动将资源转移到当前对象</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 打印 data</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;<br>        std::cout &lt;&lt; <span class="hljs-string">&quot;Data: &quot;</span> &lt;&lt; data &lt;&lt; std::endl;<br>    &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-function">MyClass <span class="hljs-title">obj1</span><span class="hljs-params">(<span class="hljs-string">&quot;Hello, world!&quot;</span>)</span></span>; <span class="hljs-comment">// 调用默认构造函数</span><br>    obj<span class="hljs-number">1.</span><span class="hljs-built_in">print</span>();<br><br>    <span class="hljs-comment">// 移动构造一个新对象</span><br>    MyClass obj2 = std::<span class="hljs-built_in">move</span>(obj1); <span class="hljs-comment">// 调用移动构造函数</span><br>    obj<span class="hljs-number">2.</span><span class="hljs-built_in">print</span>();<br><br>    <span class="hljs-comment">// 移动赋值操作符</span><br>    <span class="hljs-function">MyClass <span class="hljs-title">obj3</span><span class="hljs-params">(<span class="hljs-string">&quot;Temporary Data&quot;</span>)</span></span>;<br>    obj<span class="hljs-number">3.</span><span class="hljs-built_in">print</span>();<br>    obj3 = std::<span class="hljs-built_in">move</span>(obj2); <span class="hljs-comment">// 调用移动赋值操作符</span><br>    obj<span class="hljs-number">3.</span><span class="hljs-built_in">print</span>();<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs bush">MyClass constructor: Hello, world!<br>Data: Hello, world!<br>MyClass move constructor<br>Data: Hello, world!<br>MyClass constructor: Temporary Data<br>Data: Temporary Data<br>MyClass move assignment operator<br>Data: Hello, world!<br></code></pre></td></tr></table></figure>
+<ol>
+<li>右值引用让编译器知道何时可使用移动语义</li>
+<li>编译移动构造函数，使其提供所需的方法。也就是怎么让资源从一个对象转移到另一个对象，而不用复制</li>
+</ol>
+<h2 id="完美转发"><a href="#完美转发" class="headerlink" title="完美转发"></a>完美转发</h2><p>完美转发（Perfect Forwarding）是 C++11 引入的一种技术，它允许我们在不丢失类型信息的情况下将函数参数转发给另一个函数。完美转发确保了无论传递给函数的是<strong>左值</strong>还是<strong>右值</strong>，都能够正确地转发到目标函数中，而不会进行不必要的拷贝或失去原始类型的特性。</p>
+<p>完美转发的关键在于<strong>转发引用（Forwarding Reference）</strong>，也叫做**万能引用（Universal Reference），**通过 T&amp;&amp; 来实现。</p>
+<h4 id="引用折叠"><a href="#引用折叠" class="headerlink" title="引用折叠"></a>引用折叠</h4><p>在 C++ 中，<strong>引用不能引用引用</strong>（例如 int&amp; &amp; 是非法的），但在模板和 decltype 等场景下，我们可能会遇到<strong>多重引用</strong>，这时 C++ 需要确定最终的<strong>引用</strong>类型，这就是引用折叠规则的作用。</p>
+<blockquote>
+<p>引用折叠规则：<br>&amp; + &amp; -&gt; &amp;<br>&amp; + &amp;&amp; -&gt; &amp;<br>&amp;&amp; + &amp; -&gt; &amp;<br>&amp;&amp; + &amp;&amp; -&gt; &amp;&amp;</p>
+</blockquote>
+<ul>
+<li>任何左值引用（&amp;）+ 任何引用（&amp; 或 &amp;&amp;）&#x3D; 左值引用（&amp;）</li>
+<li>只有右值引用（&amp;&amp;）+ 右值引用（&amp;&amp;）&#x3D; 右值引用（&amp;&amp;）</li>
+</ul>
+<h4 id="forward"><a href="#forward" class="headerlink" title="forward"></a>forward</h4><p>std::forward 是 C++11 引入的一个标准库函数，专门用于完美转发（Perfect Forwarding），它的主要作用是在模板中保持参数的原始值类别（左值或右值），确保参数不会被意外降级为左值，从而避免性能问题或语义错误。<br><strong>std::forward 的核心作用就是让参数以“合适”的方式传递给其他函数，而不改变它原来的值类别（左值或右值）。</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;utility&gt;</span>  <span class="hljs-comment">// std::forward</span></span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">process</span><span class="hljs-params">(<span class="hljs-type">int</span>&amp; x)</span> </span>&#123; std::cout &lt;&lt; <span class="hljs-string">&quot;Lvalue reference\n&quot;</span>; &#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">process</span><span class="hljs-params">(<span class="hljs-type">int</span>&amp;&amp; x)</span> </span>&#123; std::cout &lt;&lt; <span class="hljs-string">&quot;Rvalue reference\n&quot;</span>; &#125;<br><br><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">wrapper</span><span class="hljs-params">(T&amp;&amp; arg)</span> </span>&#123; <br>    <span class="hljs-built_in">process</span>(std::forward&lt;T&gt;(arg));  <span class="hljs-comment">// 通过 std::forward 传递参数</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> a = <span class="hljs-number">42</span>;<br>    <span class="hljs-built_in">wrapper</span>(a);  <span class="hljs-comment">// 左值传递</span><br>    <span class="hljs-built_in">wrapper</span>(<span class="hljs-number">42</span>); <span class="hljs-comment">// 右值传递</span><br>&#125;<br><span class="hljs-comment">//Lvalue reference</span><br><span class="hljs-comment">//Rvalue reference</span><br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">wrapper</span>(a);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>T</code> 被推导为 <code>int&amp;</code>，所以 <code>T&amp;&amp;</code> 变成 <strong><code>int&amp; &amp;&amp;</code>，根据引用折叠规则，它变成 <code>int&amp;</code></strong>。</li>
+<li><code>std::forward&lt;int&amp;&gt;(arg)</code> → <code>static_cast&lt;int&amp;&gt;(arg)</code>，保持 <code>arg</code> 作为左值。</li>
+<li><code>process(int&amp;)</code> 被调用。</li>
+</ul>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">wrapper</span>(<span class="hljs-number">42</span>);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>T</code> 被推导为 <code>int</code>，所以 <code>T&amp;&amp;</code> <strong>保持为 <code>int&amp;&amp;</code></strong>。</li>
+<li><code>std::forward&lt;int&gt;(arg)</code> → <code>static_cast&lt;int&amp;&amp;&gt;(arg)</code>，保持 <code>arg</code> 作为右值。</li>
+<li><code>process(int&amp;&amp;)</code> 被调用。</li>
+</ul>
+<p>如果不使用 <code>std::forward</code></p>
+<p><code>wrapper(42);</code> 传递 <code>arg</code> 时，<strong><code>arg</code> 作为一个具名变量，被视为左值</strong>，即使 <code>T</code> 是 <code>int&amp;&amp;</code>。</p>
+<p>结果：<strong>右值 <code>42</code> 变成左值，调用 <code>process(int&amp;)</code>，破坏了移动语义</strong>。</p>
+<h4 id="std-forward-与-std-move-的区别"><a href="#std-forward-与-std-move-的区别" class="headerlink" title="std::forward 与 std::move 的区别"></a><strong><code>std::forward</code> 与 <code>std::move</code> 的区别</strong></h4><h5 id="std-move"><a href="#std-move" class="headerlink" title="std::move"></a><strong><code>std::move</code></strong></h5><ul>
+<li><code>std::move(arg)</code> <strong>无条件地</strong> 将 <code>arg</code> <strong>转换为右值</strong>（<code>T&amp;&amp;</code>）。</li>
+<li>适用于<strong>希望明确转移所有权</strong>的场景（如移动构造函数）。</li>
+</ul>
+<h5 id="std-forward"><a href="#std-forward" class="headerlink" title="std::forward"></a><strong><code>std::forward</code></strong></h5><ul>
+<li><code>std::forward&lt;T&gt;(arg)</code> <strong>只有当 <code>T</code> 是右值引用（<code>T&amp;&amp;</code>）时，才会将 <code>arg</code> 作为右值传递</strong>。</li>
+<li>适用于<strong>泛型代码，确保参数的原始值类别不变</strong>。</li>
+</ul>
+
+  </div>
+  <div id=""></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+
+    
+    <a href="/2024/10/29/%E8%A5%BF%E9%82%AELinux%E5%85%B4%E8%B6%A3%E5%B0%8F%E7%BB%842024%E7%BA%B3%E6%96%B0%E9%9D%A2%E8%AF%95%E9%A2%98%E9%A2%98%E8%A7%A3/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>西邮Linux兴趣小组2024纳新面试题题解</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By zeal. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('false')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+
