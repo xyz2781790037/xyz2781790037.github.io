@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>muduo网络库-zeal</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/logo.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="C++,muduo,">
+<meta name="description" content="山河远阔，人间星河">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/thumb1.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>zeal</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('https://api.ixiaowai.cn/gqapi/gqapi.php')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/C++">C++</a></li>
+            
+            <li><a href="/tags/muduo">muduo</a></li>
+            
+            
+        </ul>
+        
+        <h1>muduo网络库</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a href="../../about">zeal</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                </div>
+                <p>2025-08-11 15:25:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="muduo网络库"><a href="#muduo网络库" class="headerlink" title="muduo网络库"></a>muduo网络库</h1><h2 id="总体架构"><a href="#总体架构" class="headerlink" title="总体架构"></a>总体架构</h2><p>Muduo 主要由三大部分组成：</p>
+<ul>
+<li>基础工具模块（Base）</li>
+</ul>
+<p>Logger、Timestamp、Thread、ThreadPool等提供线程安全、时间戳、日志等基础设施</p>
+<ul>
+<li>网络模块（Net）</li>
+</ul>
+<p>核心类：EventLoop、Channel、Poller、Socket、Acceptor、TcpServer、TcpConnection、Connector、Buffer基于 Reactor 模型，用 epoll 实现 I&#x2F;O 复用</p>
+<ul>
+<li>应用层接口<br>事件回调（connectionCallback &#x2F; messageCallback &#x2F; writeCompleteCallback）与 Muduo 交互的</li>
+</ul>
+<h2 id="核心运行机制-—-主从Reactor-模型"><a href="#核心运行机制-—-主从Reactor-模型" class="headerlink" title="核心运行机制 — 主从Reactor 模型"></a>核心运行机制 — 主从Reactor 模型</h2><figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus"><span class="hljs-selector-attr">[主线程]</span><br>  ↓<br><span class="hljs-function"><span class="hljs-title">EventLoop</span><span class="hljs-params">(主)</span></span> — 监听新连接 —&gt; 新连接交给某个 I/O 线程的 EventLoop<br>  ↓<br><span class="hljs-selector-attr">[多个I/O线程]</span><br><span class="hljs-function"><span class="hljs-title">EventLoop</span><span class="hljs-params">(IO)</span></span> — 监听读写事件 —&gt; 调用回调函数处理<br></code></pre></td></tr></table></figure>
+<h2 id="三大核心组建"><a href="#三大核心组建" class="headerlink" title="三大核心组建"></a>三大核心组建</h2><h3 id="EventLoop"><a href="#EventLoop" class="headerlink" title="EventLoop"></a>EventLoop</h3><p>EventLoop 是 一条线程内的<strong>事件调度器</strong>：负责阻塞等待内核 I&#x2F;O 事件（通过 Epoller），把就绪的 Channel 分发处理，并按需执行定时任务与跨线程提交的回调。</p>
+<h4 id="loop-int-timeout-1"><a href="#loop-int-timeout-1" class="headerlink" title="loop(int timeout &#x3D; -1)"></a>loop(int timeout &#x3D; -1)</h4><figure class="highlight xl"><table><tr><td class="code"><pre><code class="hljs xl">主循环：<span class="hljs-function"><span class="hljs-title">while</span> (!quit_) &#123; poller-&gt;</span><span class="hljs-function"><span class="hljs-title">poll</span>(...); <span class="hljs-keyword">for</span> each activeChannel -&gt;</span> <span class="hljs-function"><span class="hljs-title">channel</span>-&gt;</span>handleEvent(...); doPendingFunctors(); &#125;<br><br>真正“执行事件”的地方是：`<span class="hljs-function"><span class="hljs-title">channel</span>-&gt;</span>handleEvent(...)` → 再进而调用 `readCallback/writeCallback`（即你的业务回调）。<br></code></pre></td></tr></table></figure>
+<h4 id="quit"><a href="#quit" class="headerlink" title="quit()"></a>quit()</h4><figure class="highlight isbl"><table><tr><td class="code"><pre><code class="hljs isbl">设置 <span class="hljs-variable">quit_</span> = <span class="hljs-variable"><span class="hljs-literal">true</span></span>，并 <span class="hljs-function"><span class="hljs-title">wakeup</span>()（如果在另一个线程里调用），确保阻塞在 <span class="hljs-variable">epoll_wait</span> 的线程能及时退出循环。</span><br></code></pre></td></tr></table></figure>
+<h4 id="runInLoop-Functor-cb"><a href="#runInLoop-Functor-cb" class="headerlink" title="runInLoop(Functor cb)"></a>runInLoop(Functor cb)</h4><figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss">如果当前调用线程是 loop 所在线程，则直接执行 <span class="hljs-built_in">cb</span>()（立即执行、同步）。<br><br>否则调用 <span class="hljs-built_in">queueInLoop</span>(cb)（放入队列并 <span class="hljs-built_in">wakeup</span>() loop），保证 cb 在 loop 线程执行。<br></code></pre></td></tr></table></figure>
+<h4 id="queueInLoop-Functor-cb"><a href="#queueInLoop-Functor-cb" class="headerlink" title="queueInLoop(Functor cb)"></a>queueInLoop(Functor cb)</h4><figure class="highlight arduino"><table><tr><td class="code"><pre><code class="hljs arduino">将 cb 推入 pendingFunctors_（用 mutex 保护）。<br><br>如果调用线程不是 loop 线程，或当前 loop 正在执行 pendingFunctors_（callingPendingFunctors_ 为 <span class="hljs-literal">true</span>），要 <span class="hljs-built_in">wakeup</span>() loop，让它尽快处理新的任务。<br></code></pre></td></tr></table></figure>
+<h3 id="Epoller"><a href="#Epoller" class="headerlink" title="Epoller"></a>Epoller</h3><p>Epoller 是对 Linux epoll 的封装，它把操作系统的 I&#x2F;O 多路复用（epoll_create1&#x2F;epoll_ctl&#x2F;epoll_wait）封装成更易用、面向对象的接口。它的职责包括：</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>创建并持有一个 epoll 实例（epollfd）。<br><br><span class="hljs-bullet">- </span>将 Channel 注册/更新/移除到 <span class="hljs-code">`epoll`</span>（通过 epoll_ctl）。<br><br><span class="hljs-bullet">- </span>调用 epoll_wait 等待事件，收集就绪事件并把对应的 Channel* 塞回上层（fillActiveChannels）。<br><br><span class="hljs-bullet">- </span>处理一些错误/信号中断（EINTR）和数组扩容（events_ vector）。<br></code></pre></td></tr></table></figure>
+<h4 id="poll-timeoutMs-activeChannels"><a href="#poll-timeoutMs-activeChannels" class="headerlink" title="poll(timeoutMs, activeChannels)"></a>poll(timeoutMs, activeChannels)</h4><p>调用 int n &#x3D; ::epoll_wait(epollfd_, events_.data(), events_.size(), timeoutMs);<br>返回值通常还会封装一个 Timestamp（表示 epoll_wait 返回的时间），传给上层 EventLoop。</p>
+<h4 id="fillActiveChannels-numEvents-activeChannels"><a href="#fillActiveChannels-numEvents-activeChannels" class="headerlink" title="fillActiveChannels(numEvents, activeChannels)"></a>fillActiveChannels(numEvents, activeChannels)</h4><p>把<code>events_[i]</code> 中的 <code>data.ptr</code>（或 data.fd）转换为 <code>Channel*</code>，设置 <strong>Channel 的 revents（就绪事件位）</strong>，并 <code>push_back</code> 到 <code>activeChannels</code>;</p>
+<h4 id="updateChannel-Channel"><a href="#updateChannel-Channel" class="headerlink" title="updateChannel(Channel*)"></a>updateChannel(Channel*)</h4><ul>
+<li>把 Channel 的期望事件注册&#x2F;修改到 epoll。</li>
+<li>维护 Channel 的状态（new&#x2F;added），用来决定 ADD &#x2F; MOD。</li>
+<li>若 epoll_ctl 失败，要根据 errno 做合理处理并记录日志（例如 EEXIST 表明意外重复 add）。</li>
+</ul>
+<h4 id="removeChannel-Channel"><a href="#removeChannel-Channel" class="headerlink" title="removeChannel(Channel*)"></a>removeChannel(Channel*)</h4><p>从 epoll 中删除 fd（EPOLL_CTL_DEL）;</p>
+<h4 id="epoll-event-events-常见标志（以及-Muduo-常用）"><a href="#epoll-event-events-常见标志（以及-Muduo-常用）" class="headerlink" title="epoll_event.events 常见标志（以及 Muduo 常用）"></a>epoll_event.events 常见标志（以及 Muduo 常用）</h4><figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>EPOLLIN / POLLIN：可读<br><span class="hljs-bullet">- </span>EPOLLOUT / POLLOUT：可写<br><span class="hljs-bullet">- </span>EPOLLERR：错误<br><span class="hljs-bullet">- </span>EPOLLHUP：挂起（连接被对端关闭/异常）<br><span class="hljs-bullet">- </span>EPOLLPRI / POLLPRI：紧急数据（很少用）<br><span class="hljs-bullet">- </span>EPOLLRDHUP：对端关闭写端（半关闭），Muduo 常监听它以更快感知 EOF<br><span class="hljs-bullet">- </span>EPOLLET：边缘触发（ET）<br><span class="hljs-bullet">- </span>EPOLLONESHOT：one-shot 行为（常用于多线程共享 fd 场景）<br></code></pre></td></tr></table></figure>
+<h3 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h3><ul>
+<li>Channel 封装 一个 fd + 它关心的事件掩码 + 这些事件发生时要调用的回调。</li>
+<li>它不持有 fd 的生命周期（不 close fd），只是作为 EventLoop ⇄ Poller ⇄ 业务回调 的桥梁。</li>
+</ul>
+<h4 id="handleEvent-—-事件真正被执行的地方"><a href="#handleEvent-—-事件真正被执行的地方" class="headerlink" title="handleEvent — 事件真正被执行的地方"></a>handleEvent — 事件真正被执行的地方</h4><p>判断处理的类型，并执行对应的回调函数</p>
+<h4 id="线程安全与归属"><a href="#线程安全与归属" class="headerlink" title="线程安全与归属"></a>线程安全与归属</h4><ul>
+<li><p>Channel 属于某个 EventLoop（创建时记录 loop_），其大部分方法必须在该 loop 线程调用（assertInLoopThread()）。</p>
+</li>
+<li><p>如果要从其他线程修改 Channel 的事件，应该通过 <code>EventLoop::runInLoop/queueInLoop</code> 让 loop 线程执行修改（以确保线程安全）。</p>
+</li>
+</ul>
+<h2 id="muduo业务层"><a href="#muduo业务层" class="headerlink" title="muduo业务层"></a>muduo业务层</h2><h3 id="TcpConnection"><a href="#TcpConnection" class="headerlink" title="TcpConnection"></a>TcpConnection</h3><ul>
+<li>表示一个 TCP 连接（客户端连接到服务器，或者客户端连接到远程服务器）</li>
+<li>管理该连接的状态（连接中、已连接、断开等）</li>
+<li>封装读写操作和缓冲区管理，实现高效的非阻塞 IO</li>
+<li>绑定一个 Channel 来监听该连接的读写事件</li>
+<li>保存各种业务回调，当连接建立、关闭、读写事件时通知业务层</li>
+<li>保证线程安全，大部分操作在 EventLoop 线程里执行</li>
+</ul>
+<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><p>里面设置了各种回调，去处理读写事件，关闭连接，和错误</p>
+<h4 id="send-message"><a href="#send-message" class="headerlink" title="send(message)"></a>send(message)</h4><ul>
+<li>先尝试直接写入 socket（如果缓冲区为空），写不完的数据放入 outputBuffer_。</li>
+<li>打开 <code>Channel</code> 的写事件监听（enableWriting()），等待 epoll 告诉你可写后继续写。</li>
+<li>发送完成后调用 <code>writeCompleteCallback_</code>，通知业务层数据已经全部发出。</li>
+</ul>
+<h3 id="TcpServer"><a href="#TcpServer" class="headerlink" title="TcpServer"></a>TcpServer</h3><h4 id="构造函数-1"><a href="#构造函数-1" class="headerlink" title="构造函数"></a>构造函数</h4><p>初始化主循环、Acceptor 监听指定地址端口<br>默认不启用端口复用，可以选用 kReusePort<br>关联新连接回调，准备接收连接</p>
+<h4 id="start"><a href="#start" class="headerlink" title="start()"></a>start()</h4><p>启动服务器：</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><code class="hljs julia">启动 <span class="hljs-built_in">IO</span> 线程池<br>启动 Acceptor 开始监听 socket<br></code></pre></td></tr></table></figure>
+<p>这个函数只允许调用一次</p>
+<h4 id="newConnection-int-sockfd-const-InetAddress-peerAddr"><a href="#newConnection-int-sockfd-const-InetAddress-peerAddr" class="headerlink" title="newConnection(int sockfd, const InetAddress&amp; peerAddr)"></a>newConnection(int sockfd, const InetAddress&amp; peerAddr)</h4><ul>
+<li><p>新连接建立时被调用（由<code>Acceptor</code> 触发）</p>
+</li>
+<li><p>生成唯一连接名字</p>
+</li>
+<li><p>选择一个 <code>IO EventLoop</code>（通过线程池轮询）</p>
+</li>
+<li><p>创建新的 <code>TcpConnection</code> 对象，绑定对应 EventLoop 和 socket fd</p>
+</li>
+<li><p>绑定 <code>TcpConnection</code> 的各种回调（连接、消息、关闭、写完成等）</p>
+</li>
+<li><p>把连接加入 <code>connections_</code> 容器管理</p>
+</li>
+<li><p>调用 <code>TcpConnection::connectEstablished()</code> 通知连接建立</p>
+</li>
+</ul>
+<h4 id="removeConnection-const-TcpConnectionPtr-conn"><a href="#removeConnection-const-TcpConnectionPtr-conn" class="headerlink" title="removeConnection(const TcpConnectionPtr&amp; conn)"></a>removeConnection(const TcpConnectionPtr&amp; conn)</h4><ul>
+<li><p>连接关闭时被调用</p>
+</li>
+<li><p>从 <code>connections_</code> 容器移除连接</p>
+</li>
+<li><p>调用 <code>TcpConnection::connectDestroyed()</code> 执行清理</p>
+</li>
+<li><p>这个函数会被 <code>CloseCallback</code> 触发</p>
+</li>
+</ul>
+<h2 id="Muduo-的网络封装层"><a href="#Muduo-的网络封装层" class="headerlink" title="Muduo 的网络封装层"></a>Muduo 的网络封装层</h2><h3 id="Acceptor"><a href="#Acceptor" class="headerlink" title="Acceptor"></a>Acceptor</h3><h4 id="构造函数-2"><a href="#构造函数-2" class="headerlink" title="构造函数"></a>构造函数</h4><figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>创建非阻塞监听 socket<br><span class="hljs-bullet">- </span>设置 SO_REUSEADDR / SO_REUSEPORT<br><span class="hljs-bullet">- </span>绑定监听地址<br><span class="hljs-bullet">- </span>用 Channel 监控监听 socket 的读事件<br><span class="hljs-bullet">- </span>绑定读事件回调到 handleRead()<br></code></pre></td></tr></table></figure>
+<h4 id="Acceptor-listen"><a href="#Acceptor-listen" class="headerlink" title="Acceptor::listen()"></a>Acceptor::listen()</h4><p>调用 listen() 后，监听 socket 的 EPOLLIN 事件就会被 EventLoop 关注。<br>当有新连接到来，epoll_wait() 会返回监听 fd 可读，触发 handleRead()。</p>
+<h4 id="handleRead"><a href="#handleRead" class="headerlink" title="handleRead()"></a>handleRead()</h4><p>新连接建立后，去触发回调函数</p>
+<h3 id="Socket（套接字封装类）"><a href="#Socket（套接字封装类）" class="headerlink" title="Socket（套接字封装类）"></a>Socket（套接字封装类）</h3><figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>管理 socket 文件描述符的生命周期（RAII，析构时自动 close）<br><span class="hljs-bullet">- </span>提供安全、易用的 socket API 调用接口<br><span class="hljs-bullet">- </span>避免忘记设置 SO_REUSEADDR、TCP_NODELAY 等常见坑<br></code></pre></td></tr></table></figure>
+<h3 id="InetAddress（网络地址类）"><a href="#InetAddress（网络地址类）" class="headerlink" title="InetAddress（网络地址类）"></a>InetAddress（网络地址类）</h3><figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>封装 IP 地址 和 端口号（IPv4 / IPv6）<br><span class="hljs-bullet">- </span>提供与 Linux sockaddr_in 互转的方法<br><span class="hljs-bullet">- </span>负责字节序转换（host ↔ network）<br></code></pre></td></tr></table></figure>
+<h2 id="muduo基础工具"><a href="#muduo基础工具" class="headerlink" title="muduo基础工具"></a>muduo基础工具</h2><h3 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h3><ul>
+<li>封装了 TCP 收发数据的内存缓冲区</li>
+<li>提供高效、连续的字节存储，避免手动 malloc&#x2F;free 和拷贝</li>
+<li>方便按需读取&#x2F;写入，不用一次性全部处理</li>
+</ul>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">TcpConnection 有两个 <span class="hljs-built_in">Buffer</span>：inputBuffer_（接收） 和 outputBuffer_（发送）<br></code></pre></td></tr></table></figure>
+<h3 id="Timer-TimerQueue（定时器）"><a href="#Timer-TimerQueue（定时器）" class="headerlink" title="Timer &#x2F; TimerQueue（定时器）"></a>Timer &#x2F; TimerQueue（定时器）</h3><h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><ul>
+<li><p>在 EventLoop 中实现高效的定时任务管理</p>
+</li>
+<li><p>支持一次性任务和周期性任务</p>
+</li>
+<li><p>使用 Linux timerfd 机制与 epoll 集成</p>
+</li>
+</ul>
+<h4 id="为什么要有-Timer？"><a href="#为什么要有-Timer？" class="headerlink" title="为什么要有 Timer？"></a>为什么要有 Timer？</h4><p>在网络编程中，你可能需要：</p>
+<ul>
+<li><p>定时关闭空闲连接（心跳超时）</p>
+</li>
+<li><p>定时发送心跳包</p>
+</li>
+<li><p>延迟执行某个任务<br>这些任务必须和 Reactor 的事件循环集成，否则就得自己写一套线程安全的定时器机制。</p>
+</li>
+</ul>
+<h2 id="自己实现的muduo功能"><a href="#自己实现的muduo功能" class="headerlink" title="自己实现的muduo功能"></a>自己实现的muduo功能</h2><p>├── base<br>│   ├── CurrentThread.cc<br>│   ├── CurrentThread.h<br>│   ├── logger.cc<br>│   ├── logger.h<br>│   ├── logStream.cc<br>│   ├── logStream.h<br>│   ├── noncopyable.h<br>│   ├── Timestamp.cc<br>│   └── Timestamp.h<br>├── CMakeLists.txt<br>└── net<br>    ├── Acceptor.cc<br>    ├── Acceptor.h<br>    ├── Buffer.cc<br>    ├── Buffer.h<br>    ├── Channel.cc<br>    ├── Channel.h<br>    ├── Connector.cc<br>    ├── Connector.h<br>    ├── Epoller.cc<br>    ├── Epoller.h<br>    ├── EventLoop.cc<br>    ├── EventLoop.h<br>    ├── EventLoopThread.h<br>    ├── EventLoopThreadpool.cc<br>    ├── EventLoopThreadpool.h<br>    ├── InetAddress.h<br>    ├── Poller.h<br>    ├── sigpipe.h<br>    ├── Socket.h<br>    ├── SocketOps.cc<br>    ├── SocketOps.h<br>    ├── TcpClient.cc<br>    ├── TcpClient.h<br>    ├── TcpConnection.cc<br>    ├── TcpConnection.h<br>    ├── TcpServer.cc<br>    ├── TcpServer.h<br>    ├── Timer.cc<br>    ├── Timer.h<br>    ├── TimerId.h<br>    ├── TimerQueue.cc<br>    └── TimerQueue.h</p>
+
+  </div>
+  <div id=""></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+
+    
+    <a href="/2025/03/20/C++STL/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>c++STL</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By zeal. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
+			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('false')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+
