@@ -868,7 +868,7 @@
     display: inline-block;
     line-height: 1;
     text-decoration: none;
-    white-space: pre-wrap;
+    white-space: pre;
     cursor: pointer;
     border: 1px solid #12183a;
     border-radius: 16px;
@@ -1240,7 +1240,7 @@
   }
   .gt-container .gt-comment-body .email-hidden-reply {
     display: none;
-    white-space: pre-wrap;
+    white-space: pre;
   }
   .gt-container .gt-comment-body .email-hidden-reply .email-signature-reply {
     padding: 0 15px;
