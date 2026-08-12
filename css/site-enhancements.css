@@ -124,3 +124,8 @@
     transition: none;
   }
 }
+
+#aside-content .card-info .site-data > a[href="/categories/"],
+#sidebar #sidebar-menus .site-data > a[href="/categories/"] {
+  display: none;
+}
