@@ -560,6 +560,41 @@ hue-6-2: #e6c07b
 .hljs-link {
   text-decoration: underline;
 }
+#article figure.highlight {
+  margin: 20px 0 15px;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: #292d3e;
+}
+#article figure.highlight table {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  table-layout: auto;
+  overflow: visible;
+}
+#article figure.highlight table tr {
+  line-height: 1.5em;
+}
+#article figure.highlight table td,
+#article figure.highlight table tr:first-child td,
+#article figure.highlight table tr td:first-child {
+  padding: 0;
+  border: 0;
+}
+#article figure.highlight pre {
+  display: block;
+  max-width: none;
+  margin: 0;
+}
+#article figure.highlight pre code {
+  display: block;
+  width: auto;
+  min-width: max-content;
+  box-sizing: border-box;
+  margin: 0;
+}
 .about-header-background {
   display: flex;
   flex-shrink: 0;
