@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Zeal的博客</title>
   
-  
+  <subtitle>Hello here, I&#39;m Zeal</subtitle>
   <link href="https://xyz2781790037.github.io/atom.xml" rel="self"/>
   
   <link href="https://xyz2781790037.github.io/"/>
@@ -10,7 +10,7 @@
   <id>https://xyz2781790037.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Zeal</name>
     
   </author>
   
