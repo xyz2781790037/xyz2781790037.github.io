@@ -1,4 +1,10 @@
 /* Site-owned visual enhancements. Keep these outside the Butterfly theme. */
+body {
+  background:
+    linear-gradient(135deg, rgba(8, 12, 22, 0.3), rgba(8, 12, 22, 0.12)),
+    url('/images/site-background.png') center / cover fixed;
+}
+
 #page-header.full_page {
   overflow: hidden;
   isolation: isolate;
